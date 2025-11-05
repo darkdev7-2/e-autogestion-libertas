@@ -35,4 +35,38 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | E-Auto Gestion Services
+    |--------------------------------------------------------------------------
+    */
+
+    'twilio' => [
+        'sid' => env('TWILIO_SID'),
+        'token' => env('TWILIO_TOKEN'),
+        'from' => env('TWILIO_FROM'),
+        'whatsapp_from' => env('TWILIO_WHATSAPP_FROM'),
+    ],
+
+    'sendgrid' => [
+        'api_key' => env('SENDGRID_API_KEY'),
+    ],
+
+    'payment' => [
+        'default_provider' => env('PAYMENT_PROVIDER', 'kkiapay'),
+    ],
+
+    'kkiapay' => [
+        'public_key' => env('KKIAPAY_PUBLIC_KEY'),
+        'private_key' => env('KKIAPAY_PRIVATE_KEY'),
+        'secret' => env('KKIAPAY_SECRET'),
+        'sandbox' => env('KKIAPAY_SANDBOX', true),
+    ],
+
+    'fedapay' => [
+        'public_key' => env('FEDAPAY_PUBLIC_KEY'),
+        'secret_key' => env('FEDAPAY_SECRET_KEY'),
+        'sandbox' => env('FEDAPAY_SANDBOX', true),
+    ],
+
 ];

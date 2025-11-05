@@ -1,18 +1,29 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', [PublicController::class, 'home'])->name('home');
+Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
+Route::post('/contact', [PublicController::class, 'submitContact'])->name('contact.submit');
+Route::get('/confidentialite', [PublicController::class, 'privacy'])->name('privacy');
+Route::get('/mentions-legales', [PublicController::class, 'terms'])->name('terms');
+Route::get('/aide', [PublicController::class, 'help'])->name('help');
+
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
